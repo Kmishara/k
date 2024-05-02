@@ -10,9 +10,11 @@
     <input style="color: black;" type="text" placeholder="enter music title">
     <button style="color: black;" onclick="searchsong()" >search</button>
 <div class="right" style="width: 100%;">
-    <div class="musics"></div>
-</div>
+    <div class="musics">
 
+    </div>
+</div>
+<audio src="/stream/f9ced0de3ebe9039b3369fbb80d5963bc5c30ac7" controls></audio>
     <!-- axios connect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
@@ -39,6 +41,11 @@ async function searchsong() {
     </div>`});
     document.querySelector('.musics').innerHTML = clutter
 }
+function songcardclicked(filename) {
+    document.querySelector('audio').setAttribute('src',`/stream/${filename}`)
+    document.querySelector('audio').play()
+    console.log(filename)
+  }
     </script>
 </body>
 </html>

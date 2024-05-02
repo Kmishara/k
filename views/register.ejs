@@ -2,34 +2,40 @@
   <html>
   <head>
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <title> CSS Login Screen Tutorial </title>
+  <title>Register page </title>
   </head>
   <body>
     <body>
-      <div class="login-page">
-        <div class="form">
-          <div class="login">
-            <div class="login-header">
-              <h3>LOGIN</h3>
-              <p>Please enter your credentials to login.</p>
-            </div>
+      <div id="formmain">
+        <div id="form">
+          <div id="formtxt">
+ <img src="data:image/png;base64,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" alt="">
+          <h1>spotify</h1>
           </div>
-          <form action="/auth" method="post" class="login-form">
-            <input name="username" type="text" placeholder="username"/>
-            <input name="password" type="password" placeholder="password"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
-          </form>
+         
           <form action="/register" method="post">
-            <input type="text" placeholder="name" name="username">
-            <input type="email" placeholder="email" name="email">
-            <input type="password" placeholder="password" name="password">
-               <input type="submit">
-        
-          </form>
+            <div class="register">
+          <h3>register form</h3>
+          <input type="text" placeholder="name" name="username">
+          <input type="email" placeholder="email" name="email">
+          <input type="password" placeholder="password" name="password">
+             <input type="submit">
         </div>
+               </form>
+          <form action="/auth" method="post">
+            <div class="login">
+                <h3>Login form</h3>
+                <input name="username" type="text" placeholder="username"/>
+                <input name="password" type="password" placeholder="password"/>
+                <input type="submit" value="login"/>
+              </div>
+            
+            </form>
+            
+          
+  </div>
       </div>
- 
+     
   
 </body>
 </html>

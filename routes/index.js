@@ -81,13 +81,9 @@ router.post('/register', (req, res, next) => {
 router.get('/auth', (req, res, next) => {
   res.render('register')
 })
-
-
-
 router.post(
   '/auth',
-
-  passport.authenticate('local', {
+ passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/auth',
   }),
@@ -132,9 +128,12 @@ router.get('/',isloggedIn, async function(req, res, next) {
 
 router.get('/poster/:posterName' , (req,res,next)=>{
   gfsBucketPoster.openDownloadStreamByName(req.params.posterName).pipe(res)
+  console.log(req.params.posterName);
 })
 const storage = multer.memoryStorage()
  const upload = multer({ storage: storage })
+
+ 
  router.post('/uploadMusic',isloggedIn,upload.array('song') , async (req, res, next) => {
   // console.log(req.file)
 // req.file nhut sara file ko upload krta h default
@@ -167,19 +166,17 @@ router.get('/uploadMusic', isloggedIn ,(req,res,next) => {
 router.get('/stream/:Musicname', async (req,res,next)=>{
     const currentsong = await sonModel.findOne({
     filename:req.params.Musicname
-   })
+})
 
 console.log(currentsong);
 
    const stream =  gfsBucket.openDownloadStreamByName(req.params.Musicname)
    //--------- set the response headers for the media -------  control speed-------------//
-
-
-  //   res.set('Content.Type','audio/mpeg') 
-  // res.set('Content.Length', currentsong.size + 1)
-  //   res.set('Content.Ranges','byte')
-  //   res.set('Content.Range','bytes 0 - ${currentsong.size - 1}/${currentsong.size}')
-  // res.status(206)
+    res.set('Content-Type', 'audio/mpeg'); 
+    res.set("Content-Length", currentsong.size + 1)
+    res.set('Content-Ranges','bytes')
+    res.set('Content-Range',`bytes ${0}-${currentsong.size - 1}/${currentsong.size}`)
+    res.status(206)
    
     stream.pipe(res);
  })
