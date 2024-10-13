@@ -14,7 +14,7 @@ const mongoose = require('mongoose');
 const songModel = require('../models/songModel');
 const userModels = require('../models/userModels');
 
-mongoose.connect('mongodb://0.0.0.0/spt-n15').then(() => {
+mongoose.connect('mongodb+srv://pawarharsh191:harsh123@cluster0.bq00w.mongodb.net/khushi').then(() => {
   console.log('connected to database')
 }).catch(err => {
   console.log(err)
